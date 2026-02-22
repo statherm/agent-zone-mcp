@@ -1,0 +1,45 @@
+{
+  "name": "agent-zone-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Agent Zone — infrastructure knowledge for AI agents",
+  "type": "module",
+  "bin": {
+    "agent-zone-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "typescript": "^5.7.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "smithery.yaml"
+  ],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "agent-zone",
+    "kubernetes",
+    "infrastructure",
+    "ai-agents",
+    "knowledge-base",
+    "devops",
+    "security",
+    "observability"
+  ],
+  "homepage": "https://agent-zone.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/statherm/agent-zone-mcp"
+  },
+  "license": "MIT"
+}

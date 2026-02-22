@@ -1,0 +1,19 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiUrl:
+        type: string
+        description: "Agent Zone API base URL"
+        default: "https://api.agent-zone.ai"
+  commandFunction: |
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        AGENT_ZONE_API_URL: config.apiUrl || 'https://api.agent-zone.ai'
+      }
+    })
+  exampleConfig:
+    apiUrl: "https://api.agent-zone.ai"
