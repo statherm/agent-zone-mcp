@@ -1,8 +1,26 @@
 # agent-zone-mcp
 
-MCP server for [Agent Zone](https://agent-zone.ai) — infrastructure knowledge, validation, and execution templates for AI agents.
+Infrastructure Knowledge MCP Server
 
-Search 200+ articles, validate K8s manifests, get structured playbooks, and discover the right validation path for your infrastructure work.
+[![npm version](https://img.shields.io/npm/v/agent-zone-mcp.svg)](https://www.npmjs.com/package/agent-zone-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/agent-zone-mcp.svg)](https://www.npmjs.com/package/agent-zone-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Smithery](https://smithery.ai/badge/@statherm/agent-zone-mcp)](https://smithery.ai/server/@statherm/agent-zone-mcp)
+
+MCP server for [Agent Zone](https://agent-zone.ai) — vendor-neutral infrastructure knowledge, K8s validation, and execution templates for AI agents.
+
+Search 200+ articles, validate K8s manifests, get structured playbooks, and discover the right validation path for your infrastructure work. Free, no API key required.
+
+## Features
+
+- **200+ infrastructure articles** — Kubernetes, networking, observability, CI/CD, disaster recovery, security, multi-region patterns
+- **10 MCP tools** — search, validate, get templates and playbooks, submit feedback
+- **K8s manifest validation** — 5 built-in policy checks (resource limits, health probes, security, labels, image tags)
+- **5 validation paths** — from static analysis (~40% detection) to cloud ephemeral (~98%)
+- **19 infrastructure templates** — searchable by path, tags, and query with download support
+- **6 structured playbooks** — step-by-step operational guidance filtered by validation path
+- **Vendor-neutral** — not tied to any cloud provider
+- **Free, no API key** — works out of the box
 
 ## Quick Start
 
@@ -29,6 +47,14 @@ Add to your MCP config:
     }
   }
 }
+```
+
+### Streamable HTTP
+
+For clients that support HTTP transport directly:
+
+```
+https://api.agent-zone.ai/mcp
 ```
 
 ## Tools
@@ -58,6 +84,12 @@ Add to your MCP config:
 | `select_validation_path` | Describe your resources and needs, get the right validation path + templates + playbook. |
 | `validate` | Submit K8s manifests or Helm values, get policy validation results back. |
 
+## How It Works
+
+This is a stdio-based MCP server that wraps the [Agent Zone REST API](https://api.agent-zone.ai). The npm package runs locally and communicates with `api.agent-zone.ai` over HTTPS. No API key, no account, no local database — just install and use.
+
+A Streamable HTTP endpoint is also available at `https://api.agent-zone.ai/mcp` for clients that support remote MCP servers directly.
+
 ## Example: End-to-End Validation Flow
 
 An agent needs to test a Helm chart and has Docker with 8GB RAM:
@@ -82,7 +114,7 @@ An agent needs to test a Helm chart and has Docker with 8GB RAM:
 | 4 | Cloud Ephemeral | Cloud account | ~98% |
 | 5 | Free-Tier Cloud | Codespaces/free tier | ~85% |
 
-## Policy Checks (validate tool)
+## Policy Checks
 
 The `validate` tool checks K8s manifests against 5 policies:
 
@@ -92,15 +124,13 @@ The `validate` tool checks K8s manifests against 5 policies:
 - **no-privileged** — no privileged mode, root user, or privilege escalation
 - **require-labels** — standard `app.kubernetes.io/name` and `app.kubernetes.io/version` labels
 
-## Categories
-
-Kubernetes, Security, Observability, CI/CD, Databases, Infrastructure, Agent Tooling
-
 ## Links
 
-- Website: [agent-zone.ai](https://agent-zone.ai)
-- API: [api.agent-zone.ai](https://api.agent-zone.ai)
-- Agent Discovery: [/.well-known/agent.json](https://api.agent-zone.ai/.well-known/agent.json)
+- [npm](https://www.npmjs.com/package/agent-zone-mcp)
+- [Smithery](https://smithery.ai/server/@statherm/agent-zone-mcp)
+- [Website](https://agent-zone.ai)
+- [API](https://api.agent-zone.ai)
+- [Agent Discovery](https://api.agent-zone.ai/.well-known/agent.json)
 
 ## License
 
